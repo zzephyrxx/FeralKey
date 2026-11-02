@@ -1,0 +1,42 @@
+name: 设备适配 / 协议证据
+description: 提供新型号或连接方式的资料，不代表已经支持
+title: "[Device] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先阅读 docs/KEYBOARD-GUIDE.md。相同品牌、型号或 VID/PID 不保证协议相同。
+        不需要尝试未知写命令；没有可用协议也是有效研究结果。不要上传私人信息、配对密钥或未经许可的驱动/固件。
+  - type: input
+    id: model
+    attributes:
+      label: 品牌、型号和硬件版本（如果已知）
+    validations:
+      required: true
+  - type: dropdown
+    id: transport
+    attributes:
+      label: 本次研究的连接方式
+      options:
+        - USB 有线
+        - 2.4G 接收器
+        - 蓝牙
+    validations:
+      required: true
+  - type: textarea
+    id: interface
+    attributes:
+      label: 接口元数据（如已知）
+      description: VID/PID、Transport、Usage Page / Usage、报告长度或 GATT 服务；不要提供设备唯一标识。
+  - type: textarea
+    id: source
+    attributes:
+      label: 公开协议来源与具体证据
+      description: 项目链接、固定提交、源文件、许可证；区分观察事实、推断与未知。
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: 已验证的功能及异常
+      description: 说明使用哪个软件和连接方式；识别、成功发送和真实灯光变化请分别描述。

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "rk98-258a-00c1-usb",
+  "name": "RK98-100KRGB N",
+  "executablePlugin": false,
+  "match": { "vendorID": 9610, "productID": 193, "transport": "USB", "usagePage": 1, "usage": 128, "featureReportBytes": 65, "reportID": 10 },
+  "capabilities": {
+    "standardLighting": "source-backed; hardware-unverified",
+    "perKeyStaticRGB": "source-backed; hardware-unverified",
+    "keymap": "source-backed; hardware-unverified",
+    "transientRGBStream": "unknown",
+    "readOriginalConfiguration": "unsupported"
+  },
+  "persistence": "unknown; one-shot RGB or explicit per-connection opt-in periodic static RGB, change-deduplicated",
+  "source": {
+    "url": "https://github.com/rnayabed/rangoli",
+    "commit": "503cdc3b5c630d56b14d7f18533f57e39583a7db",
+    "files": ["src/keyboardconfiguratorcontroller.cpp", "src/modemodel.h", "keyboards/258a/configs/c1.json"],
+    "license": "GPL-3.0-or-later"
+  },
+  "validation": { "enumeration": "confirmed on development machine", "packetEncoding": "offline tested", "physicalLighting": "pending owner test" }
+}

@@ -1,0 +1,43 @@
+name: 问题反馈
+description: 报告当前功能的可复现异常
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        当前仅实验适配 RK98-100KRGB N / USB 258A:00C1；无线灯控尚未支持。
+        请勿粘贴账号文件、令牌、序列号、设备地址、私人输入、通知正文或个人额度。
+        涉及漏洞利用或凭据泄露时请先阅读 SECURITY.md。
+  - type: input
+    id: version
+    attributes:
+      label: FeralKey 版本或提交
+      placeholder: "例如：0.10.0 / 提交短编号"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: macOS 版本与 Mac 架构
+      placeholder: "例如：macOS 26、Apple Silicon"
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 键盘型号、连接方式及 VID/PID（如果已知）
+      placeholder: "例如：RK98、有线 USB、258A:00C1；不要填写序列号"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤、预期与实际结果
+      description: 请附错误原文，区分屏幕预览与实体键盘效果。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 已脱敏的日志或截图（可选）
+      description: 提交前人工检查；不要上传完整原始研究包或抓包。

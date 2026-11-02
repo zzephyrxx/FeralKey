@@ -1,0 +1,43 @@
+name: macOS checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  offline:
+    name: Offline tests and build
+    runs-on: macos-26
+    timeout-minutes: 25
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Check repository and documentation
+        run: python3 scripts/check-repository.py
+      - name: Verify publication check refusals
+        run: python3 tests/RepositoryChecksTests.py
+      - name: Inspect build environment
+        run: |
+          xcodebuild -version
+          xcrun --sdk macosx --show-sdk-version
+          swiftc --version
+      - name: Run offline tests
+        run: ./scripts/test.sh
+      - name: Verify automatic refresh with fake Codex
+        run: ./scripts/test-auto-refresh.sh
+      - name: Run offline quota smoke check
+        run: ./scripts/quota-smoke.sh
+      - name: Build candidate app
+        run: ./scripts/build.sh "$PWD/build/ci/FeralKey.app"
+      - name: Verify isolated source and app packaging
+        run: python3 tests/PackagingTests.py
